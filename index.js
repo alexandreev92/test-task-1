@@ -50,15 +50,13 @@ function getZero(num){
     return num;
   }
 }
-//Задаём числовой атрибут для input, чтобы нельзя было вводить прочие символы, а также делаем кнопку start не активной если input пуст
+//Делаем кнопку start не активной если input пуст
 inputEl.addEventListener('input', () => {
-  inputEl.setAttribute('type', 'number')
   if (inputEl.value !== '') {
     buttonEl.disabled = false
   } else {
     buttonEl.disabled = true
   }
-   
 });
 
 // Отображаем числовое значение таймера в DOM элементе
@@ -86,10 +84,10 @@ window.addEventListener('keypress', (e)=>{
 })
 // Функция запуска таймера (инициализация)
 function startTimer() {
-  const seconds = Number(inputEl.value.replace(/\D/g, ''));
-  if (seconds !== 0) {
+  const seconds = Number(inputEl.value);
+  if (seconds !== 0 && (Number.isInteger(seconds) == true)) {
     animateTimer(seconds);
     inputEl.value = '';
-  }
+  } 
 
 }
